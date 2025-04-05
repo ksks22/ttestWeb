@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件预览</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>文件预览</h1>
+    </header>
+    <div class="container">
+        <section id="file-preview">
+            <h2>文件预览</h2>
+            {% set file_type = file_preview_data.type %} {% set file_path = file_preview_data.path %} {% set requested_file = file_preview_data.name %} {% if file_type == 'document' %}
+            <p>文档文件不支持在线预览，请下载后查看。</p>
+            <a href="{{ url_for('static', filename=file_path) }}" download="{{ requested_file }}">下载 {{ requested_file }}</a> {% elif file_type == 'image' %}
+            <img src="{{ url_for('static', filename=file_path) }}" alt="{{ requested_file }}" class="detail-image"> {% elif file_type == 'video' %}
+            <div class="video-container">
+                <video controls>
+                        <source src="{{ url_for('static', filename=file_path) }}" type="video/mp4">
+                        您的浏览器不支持 video 标签。
+                    </video>
+                <!-- 全屏按钮 -->
+                <button class="video-fullscreen-button" onclick="toggleFullscreen()">全屏</button>
+            </div>
+            <script>
+                function toggleFullscreen() {
+                    var video = document.querySelector('.video-container video');
+                    if (!document.fullscreenElement) {
+                        video.requestFullscreen();
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        }
+                    }
+                }
+            </script>
+            {% elif file_type == 'audio' %}
+            <div class="audio-player">
+                <audio controls>
+                        <source src="{{ url_for('static', filename=file_path) }}" type="audio/mpeg">
+                        您的浏览器不支持 audio 标签。
+                    </audio>
+            </div>
+            {% elif file_type == 'archive' %}
+            <p>压缩文件不支持在线预览，请下载后解压查看。</p>
+            <a href="{{ url_for('static', filename=file_path) }}" download="{{ requested_file }}">下载 {{ requested_file }}</a> {% elif file_type == 'program' %}
+            <p>程序文件不支持在线预览，请下载后运行。</p>
+            <a href="{{ url_for('static', filename=file_path) }}" download="{{ requested_file }}">下载 {{ requested_file }}</a> {% elif file_type == 'other' %}
+            <p>该文件类型不支持在线预览，请下载后查看。</p>
+            <a href="{{ url_for('static', filename=file_path) }}" download="{{ requested_file }}">下载 {{ requested_file }}</a> {% endif %}
+        </section>
+        <section id="back-to-index">
+            <a href="{{ url_for('index') }}">返回文件列表</a>
+        </section>
+    </div>
+</body>
+
+</html>

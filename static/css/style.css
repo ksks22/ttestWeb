@@ -1,0 +1,219 @@
+/* 重置默认样式 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ff5733;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1,
+h2 {
+    color: #ff5733;
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+
+/* 上传部分 */
+
+#upload-section form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#upload-section input[type="file"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+#upload-section input[type="file"]:focus {
+    border-color: #ff5733;
+    outline: none;
+}
+
+#upload-section button {
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#upload-section button:hover {
+    background-color: #e64c2d;
+}
+
+
+/* 文件列表部分 */
+
+#file-list ul {
+    list-style-type: none;
+}
+
+#file-list li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+#file-list a {
+    color: #ff5733;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#file-list a:hover {
+    color: #e64c2d;
+}
+
+#file-list form {
+    display: inline-block;
+}
+
+#file-list button {
+    padding: 5px 10px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#file-list button:hover {
+    background-color: #e64c2d;
+}
+
+
+/* 文件预览部分 */
+
+#file-preview h2 {
+    color: #ff5733;
+    margin-bottom: 20px;
+}
+
+#file-preview .detail-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-fullscreen-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.video-fullscreen-button:hover {
+    background-color: #e64c2d;
+}
+
+.audio-player audio {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.flash-messages {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffe6cc;
+    color: #8a5045;
+    border: 1px solid #fcbba1;
+    border-radius: 4px;
+    list-style-type: none;
+}
+
+.flash-messages li {
+    margin-bottom: 5px;
+}
+
+
+/* 背景选择部分 */
+
+#background-selection {
+    margin-bottom: 20px;
+}
+
+#background-selection select {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+#background-selection select:focus {
+    border-color: #ff5733;
+    outline: none;
+}
+
+#background-selection button {
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#background-selection button:hover {
+    background-color: #e64c2d;
+}

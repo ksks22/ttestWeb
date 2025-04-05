@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>文件管理</h1>
+    </header>
+    <div class="container">
+        <section id="upload-section">
+            <h2>上传文件</h2>
+            <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="fileInput" accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.jpg,.jpeg,.png,.gif,.bmp,.mp3,.wav,.flac,.aac,.mp4,.avi,.mkv,.wmv,.zip,.rar,.7z,.exe,.dll,.py,.java,.dmg,.iso,.psd,.indd,.raw,.wma,.mid,.midi,.torrent,.accdb,.odt,.pst,.tmp,.cfg,.log">
+                <button type="submit">上传</button>
+            </form>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+        </section>
+        <section id="file-list">
+            <h2>文件列表</h2>
+            <ul>
+                {% for file_type, filename in files %}
+                <li>
+                    <a href="{{ url_for('preview_file', filename=filename) }}">{{ filename }}</a> ({{ file_type }})
+                    <form action="{{ url_for('delete_file', filename=file_type ~ 's/' ~ filename) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('确定要删除文件 {{ filename }} 吗？')">删除</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>
